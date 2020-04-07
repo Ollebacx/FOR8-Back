@@ -82,11 +82,11 @@ Should be awesome that an user could be able to...
 
 ## Data Model
 
-### **User**                                ### **Exercise**
+### **User**                    
 
-| KEY       | TYPE     |                      | KEY           | TYPE     | 
-| --------- | -------- |                       | ------------- | -------- | 
-| _id       | ObjectId |                      | _id           | ObjectId | 
+| KEY       | TYPE     |             
+| --------- | -------- |        
+| _id       | ObjectId |       
 | username  | String   | 
 | password  | String   | 
 | email     | String   | 
@@ -170,10 +170,10 @@ METHOD | URL                     | What does it do
 -------|-------------------------|---------------------------------
 GET    | `me/workouts`           | Get User's Workouts
 GET    | `me/workouts/:workoutId`| Return one Workout
-
+------------------------------------------------------------------
 POST   | `me/workouts/:workoutId`| Add Workout_default to User_workout (unstarted)
 POST   | `me/workout/create`     | Add peronal Workout to User_workout (unstarted)
-
+--------------------------------------------------------------------
 PUT    | `me/workouts/:workoutId`| Modify User's Workout (Done, Date)
 DELETE | `me/workouts/:workoutId`| Delete User's Workout from User_workout
 

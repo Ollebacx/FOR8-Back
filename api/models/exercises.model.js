@@ -11,7 +11,7 @@ const exerciseSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['SHOULDERS', 'LEGS', 'ARMS', 'CHEST', 'BACK', 'ABS'],
+    enum: ['HOMBROS', 'PIERNAS', 'BRAZOS', 'PECHO', 'ESPALDA', 'ABS'],
     required: false
   },
   photo_url: {

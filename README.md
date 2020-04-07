@@ -84,45 +84,44 @@ Should be awesome that an user could be able to...
 
 ### **User**
 
-| KEY       | TYPE     | VALIDATIONS        |
-| --------- | -------- | ------------------ |
-| _id       | ObjectId |                    |
-| username  | String   | required: true     |
-| password  | String   | required:true      |
-| email     | String   | required:true      |
+| KEY       | TYPE     | 
+| --------- | -------- | 
+| _id       | ObjectId | 
+| username  | String   | 
+| password  | String   | 
+| email     | String   | 
 
 ### **Exercise**
 
-| KEY           | TYPE     | ENUM                                        |
-| ------------- | -------- | ------------------------------------------- |
-| _id           | ObjectId |                                             |
-| name          | String   |                                             |
-| description   | Number   |                                             |
-| category      | String   |  [Legs, Arms, Abs, Back, Chest, Shoulders]  |
-| photoURL      | String   |                                             |
+| KEY           | TYPE     | 
+| ------------- | -------- | 
+| _id           | ObjectId | 
+| name          | String   | 
+| description   | Number   | 
+| category      | String   | 
+| photoURL      | String   | 
 
 ### **Workout_default**
 
-| KEY            | TYPE                   | VALIDATIONS       |
-| -------------- | ---------------------- | ----------------- |
-| _id            | ObjectId               |                   |
-| name           | String                 | required: true    |
-| session        | Array [ Exercise._id ] | required: true    |
-| photoURL       | String                 | required: true    |
+| KEY            | TYPE                   |
+| -------------- | ---------------------- |
+| _id            | ObjectId               |
+| name           | String                 |
+| session        | Array [ Exercise._id ] |
+| photoURL       | String                 |
 
-### **User_workout**
+### **Workout**
 
-|                          | KEY          | TYPE                    | VALIDATIONS             | DEFAULT    |
-| ------------------------ | ------------ | ----------------------- | ----------------------- | ---------- |
-|                          | _id          | ObjectId                |                         |            |
-|                          | user         | user._id                | required: true          |            |
-| if using Workout_default | workout      | workout._id             |                         |            |
-|                          | rounds       | Num                     |                         | 0          |
-|                          | status       | Boolean                 | required: true          | false      |
-|                          | createdAt    | Date                    | required: true          | Date.now() |
-|                          | doneAt       | Date                    | required: true          | Date.now() |
-| if creating new workout  | name         | String                  | required: true          |            |
-| if creating new workout  | session      | Array [ Exercise._id ]  | required: true          |            |
+| KEY          | TYPE                    | 
+| ------------ | ----------------------- | 
+| _id          | ObjectId                | 
+| user         | user._id                | 
+| rounds       | Num                     | 
+| status       | Boolean                 | 
+| createdAt    | Date                    | 
+| doneAt       | Date                    | 
+| name         | String                  | 
+| session      | Array [ Exercise._id ]  | 
 
 
 ## Api routes
@@ -146,7 +145,7 @@ POST   | `auth/login`       | Authenticates a user
 
 GET    | `me/profile`            | Get info from User
 PUT    | `me/profile`            | Modify User info
-DELETE | `me/profile             | Delete user account
+DELETE | `me/profile`            | Delete user account
 
 
 ### Exercise endpoints
@@ -165,15 +164,18 @@ GET    | `workouts`             | Get All Workouts
 GET    | `workouts/:workoutId`  | Get One Workout
 
 
-### User_workout endpoints
+### Workout endpoints
 
 METHOD | URL                     | What does it do
 -------|-------------------------|---------------------------------
 GET    | `me/workouts`           | Get User's Workouts (unstarted/done)
-POST   | `me/workouts/:workoutId`| Add Workout to User_workout (unstarted)
 GET    | `me/workouts/:workoutId`| Return my Workout
+
+POST   | `me/workouts/:workoutId`| Add Workout_default to User_workout (unstarted)
+POST   | `me/workout/create`     | Add peronal Workout to User_workout (unstarted)
+
 PUT    | `me/workouts/:workoutId`| Modify User's Workout (Done, Date)
-DELETE | `me/lessons/:lessonId`  | Delete User's Workout from User_workout
+DELETE | `me/workouts/:workoutId`| Delete User's Workout from User_workout
 
 
 

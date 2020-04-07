@@ -20,5 +20,5 @@ const exerciseSchema = new mongoose.Schema({
   }
 })
 
-const exerciseModel = mongoose.model('exercises', exerciseSchema);
+const exerciseModel = mongoose.model('exercises', exerciseSchema)
 module.exports = exerciseModel

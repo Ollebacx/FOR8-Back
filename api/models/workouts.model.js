@@ -12,7 +12,8 @@ const workoutSchema = new mongoose.Schema({
   },
   is_template: {
     type: Boolean,
-    required: false
+    required: false,
+    default: ''
   },
   description: {
     type: String,

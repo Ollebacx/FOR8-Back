@@ -28,9 +28,12 @@ function getUserWorkouts (req, res) {
 }
 
 function createUserWorkout (req, res) {
-  if (req.body.is_template) {
+  if (req.body.is_template === true) {
     WorkoutModel.create({
-      ...req.body,
+      name: req.body.name,
+      description: req.body.description,
+      exercises: req.body.exercises,
+      photo_url: req.body.photo_url,
       user: res.locals.user._id
     })
       .then(response => res.json(response))

@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   createdAt: {
-    type: Number,
+    type: Date,
     default: Date.now() // Get a timestamp :)
   }
 })

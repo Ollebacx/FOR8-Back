@@ -10,7 +10,11 @@ module.exports = {
 
 function getTemplateWorkouts (req, res) {
   WorkoutModel.find()
-    .then((response) => res.json(response))
+    .then((response) => {
+      const templateWorkouts = []
+      response.forEach(workout => { if (workout.is_template === true) { templateWorkouts.push(workout) } })
+      res.json(templateWorkouts)
+    })
     .catch((err) => handleError(err, res))
 }
 
@@ -23,29 +27,18 @@ function getTemplateWorkoutById (req, res) {
 function getUserWorkouts (req, res) {
   WorkoutModel
     .find({ user: res.locals.user._id })
+    .populate('exercises')
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
 
 function createUserWorkout (req, res) {
-  if (req.body.is_template === true) {
-    WorkoutModel.create({
-      name: req.body.name,
-      description: req.body.description,
-      exercises: req.body.exercises,
-      photo_url: req.body.photo_url,
-      user: res.locals.user._id
-    })
-      .then(response => res.json(response))
-      .catch(err => handleError(err, res))
-  } else {
-    WorkoutModel.create({
-      user: res.locals.user._id,
-      name: req.body.name,
-      description: req.body.description,
-      exercises: req.body.exercises
-    })
-      .then(response => res.json(response))
-      .catch(err => handleError(err, res))
-  }
+  WorkoutModel.create({
+    user: res.locals.user._id,
+    name: req.body.name,
+    description: req.body.description,
+    exercises: req.body.exercises
+  })
+    .then(response => res.json(response))
+    .catch(err => handleError(err, res))
 }

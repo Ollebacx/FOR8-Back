@@ -8,7 +8,7 @@ module.exports = {
 }
 
 function getWorkoutsLog (req, res) {
-  WorkoutsLogModel.find()
+  WorkoutsLogModel.find({ user: res.locals.user._id })
     .then((response) => res.json(response))
     .catch((err) => handleError(err, res))
 }
@@ -22,7 +22,7 @@ function getWorkoutLogById (req, res) {
 function createWorkoutLog (req, res) {
   WorkoutsLogModel.create({
     name: req.body.name,
-    workout: req.body._id,
+    workout: req.body.workout,
     user: req.body.user,
     rounds: req.body.rounds,
     exercises: req.body.exercises

@@ -26,7 +26,7 @@ const workoutLogSchema = new mongoose.Schema({
   },
   created_at: {
     type: Date,
-    required: true,
+    required: false,
     default: Date.now()
   }
 })

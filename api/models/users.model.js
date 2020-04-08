@@ -22,6 +22,11 @@ const userSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now() // Get a timestamp :)
+  },
+  toDoWorkout: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'workouts',
+    default: null
   }
 })
 

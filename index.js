@@ -9,15 +9,16 @@ const morgan = require('morgan')
 const path = require('path')
 
 // NONGOOSE
-mongoose.connect(process.env.MONGO_URL,
-  {
+mongoose
+  .connect(process.env.MONGO_URL, {
     dbName: process.env.MONGO_DB || 'test',
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
-  }, err => {
-    if (err) { throw new Error(err) }
-    console.info('💾 Connected to Mongo Database \n')
+  })
+  .then((result) => console.info('💾 Connected to Mongo Database \n'))
+  .catch(function (err) {
+    throw new Error(err)
   })
 
 // ADDING MIDDLEWARES & ROUTER
@@ -31,7 +32,9 @@ const app = express()
 // Init server
 const PORT = process.env.PORT || 2222
 app.listen(PORT, (err) => {
-  if (err) { throw new Error(err) }
+  if (err) {
+    throw new Error(err)
+  }
   console.info('>'.repeat(40))
   console.info('💻  Reboot Server Live')
   console.info(`📡  PORT: http://localhost:${PORT}`)

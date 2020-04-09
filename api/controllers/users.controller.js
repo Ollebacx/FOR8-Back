@@ -2,7 +2,7 @@ const UserModel = require('../models/users.model')
 const { handleError } = require('../utils')
 
 module.exports = {
-  setWorkoutToDo,
+  setWorkoutToDo
 }
 
 function setWorkoutToDo (req, res) {

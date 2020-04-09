@@ -10,7 +10,7 @@ const { authUser } = require('../utils') // Authenticated Route
 
 router.use('/auth', authRouter)
 
-router.use('exercises', authUser, exercisesRouter)
+router.use('/exercises', authUser, exercisesRouter)
 router.use('/workouts', authUser, workoutsRouter)
 router.use('/me', authUser, meRouter)
 router.use('/user', authUser, userRouter)

@@ -20,6 +20,7 @@ function getTemplateWorkouts (req, res) {
 
 function getTemplateWorkoutById (req, res) {
   WorkoutModel.findById(req.params.id)
+    .populate('exercises')
     .then((response) => res.json(response))
     .catch((err) => handleError(err, res))
 }

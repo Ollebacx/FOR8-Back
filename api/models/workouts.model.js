@@ -31,7 +31,8 @@ const workoutSchema = new mongoose.Schema({
   }],
   photo_url: {
     type: String,
-    required: false
+    required: false,
+    default: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sweaty-black-athlete-doing-sit-ups-in-a-gym-royalty-free-image-1574809397.jpg'
   },
   created_at: {
     type: Date,

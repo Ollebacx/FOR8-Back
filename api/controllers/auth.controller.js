@@ -27,7 +27,7 @@ function signup (req, res) {
         { expiresIn: '1w' }
       )
 
-      return res.json({ token: token, ...userData, id: user._id })
+      return res.json({ token: token, ...userData })
     })
     .catch((err) => {
       res.status(403).json({ error: err })

@@ -27,7 +27,7 @@ function signup (req, res) {
         { expiresIn: '1w' }
       )
 
-      return res.json({ token: token, ...userData })
+      return res.json({ token: token, ...userData, id: user._id })
     })
     .catch((err) => {
       res.status(403).json({ error: err })
@@ -44,7 +44,7 @@ function login (req, res) {
         if (err) { handleError(err) }
         if (!result) { return res.json({ error: `wrong password for ${req.body.email}` }) }
 
-        const userData = { name: user.name, email: user.email }
+        const userData = { name: user.name, email: user.email, id: user._id }
 
         const token = jwt.sign(
           userData,
